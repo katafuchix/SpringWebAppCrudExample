@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.entity.UserInfoMapper" >
+
+  <!--  DateTimeカラム名とエンティティのプロパティ名が異なるのでここで定義する -->
   <resultMap id="BaseResultMap" type="com.example.demo.entity.UserInfo" >
     <!--
       WARNING - @mbggenerated
@@ -18,7 +20,7 @@
   
  
     <!-- 全件検索 -->
-    <select id="findAll" resultType="com.example.demo.entity.UserInfo">
+    <select id="findAll" resultMap="BaseResultMap"> <!-- 上で定義したBaseResultMapで取得 -->
         SELECT * FROM userinfo WHERE delete_date IS NULL
     </select>
 

@@ -1,31 +1,57 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="common/head :: head_fragment(title = 'ユーザー新規登録', scripts = ~{::script}, links = ~{::link})"></head>
+<!doctype html>
+<html xmlns:fb="https://www.facebook.com/2008/fbml" xmlns:addthis="https://www.addthis.com/help/api-spec"  prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Spring MyBatis in Bootstrap 4 with search functionality</title>
+	<link rel="shortcut icon" href="https://demo.learncodeweb.com/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
 <body>
-    <div class="container">
-        <div th:if="${validationError}" th:each="error : ${validationError}">
+   	<div class="container">
+		<div class="card">
+			<div class="card-header"><i class="fa fa-fw fa-plus-circle"></i> <strong>Add User</strong> <a th:href="@{/user/list}" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-globe"></i> Browse Users</a></div>
+			<div class="card-body">
+				<div class="col-sm-6">
+					        <div th:if="${validationError}" th:each="error : ${validationError}">
             <label class="text-danger" th:text="${error}"></label>
         </div>
-        <h1>ユーザー新規登録</h1>
-        <form th:action="@{/user/create}" th:object="${userAddRequest}" th:method="post">
-            <div class="form-group">
-                <label>名前：<span class="text-danger">※</span></label>
-                <input type="text" th:field="*{name}" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>住所：</label>
-                <input type="text" th:field="*{address}" class="form-control">
-            </div>
-            <div class="form-group">
-                <label>電話番号：<span class="text-danger">※</span></label>
-                <input type="text" th:field="*{phone}" class="form-control">
-            </div>
-            <br />
-            <div class="text-center">
-                <input type="submit" value="登録" class="btn btn-primary">
-                <a href="/user/list" class="btn btn-secondary">キャンセル</a>
-            </div>
-        </form>
-    </div>
+					<h5 class="card-title">Fields with <span class="text-danger">*</span> are mandatory!</h5>
+					<form th:action="@{/user/create}" th:object="${userAddRequest}" th:method="post">
+						<div class="form-group">
+							<label>User Name <span class="text-danger">*</span></label>
+							<input type="text" th:field="*{name}" name="username" id="username" 
+								class="form-control" placeholder="Enter user name" required>
+						</div>
+
+						<div class="form-group">
+							<label>User Address <span class="text-danger">*</span></label>
+							<input type="text" th:field="*{address}" name="useraddress" id="useraddress" class="form-control" 
+								placeholder="Enter user address" required>
+						</div>
+
+						<div class="form-group">
+							<label>User Phone <span class="text-danger">*</span></label>
+							<input type="text" th:field="*{phone}"class="tel form-control" name="userphone" id="userphone" 
+							placeholder="Enter user phone" required>
+						</div>
+						<div class="form-group">
+							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">
+								<i class="fa fa-fw fa-plus-circle"></i> Add User
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/jquery.caret/0.1/jquery.caret.js"></script>
 </body>
 </html>

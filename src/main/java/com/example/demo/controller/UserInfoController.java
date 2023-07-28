@@ -43,6 +43,7 @@ public class UserInfoController {
         List<UserInfo> userList = userInfoService.findAll();
         model.addAttribute("userlist", userList);
         model.addAttribute("userSearchRequest", new UserSearchRequest());
+        System.out.println(userList);
         return "user/search";
     }
 
